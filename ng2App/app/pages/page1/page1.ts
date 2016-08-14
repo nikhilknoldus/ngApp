@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, Nav } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 @Component({
   templateUrl: 'build/pages/page1/page1.html'
