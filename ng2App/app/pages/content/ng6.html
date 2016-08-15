@@ -1,0 +1,72 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>AngularJs 2</ion-title>
+</ion-navbar>
+<ion-content padding >
+
+  <h6 class="left">Understanding Dependencies, DevDependencies, rxjs, PeerDependencies, Package.json</h6>
+  <p class="common">
+    Sometimes we just ignore package json file because it gets created automatically but the content it contains is really important to know, questions occured in my mind when i was looking into it.<br />
+  </p>
+  <p class="common">
+  - What is the difference between Dependencies and DevDependencies ? <br /><br />
+  - Which should i use in production and for development ?<br /><br />
+  - What is Peer Dependency then ?<br /><br />
+  - How i use the packages in my application like @angular/core, @angular/compiler, @angular/http ? <br /><br />
+  - What are PolyFills, rxjs etc. ? <br /><br />
+</p>
+<span><b>Let's find answers</b></span>
+
+<p>
+ What happens when you run "npm install" command, may be you know already but lets get into quick but informative detail.
+</p>
+
+  npm install, installs both dev & normal. If you want to avoid installing devDependency simply run:<br />
+	<span class="code"> npm install "$package" --production</span><br />
+ to save a package to package.json as dev dependencies,<br />
+	<span class="code"> npm install "$package" --save-dev</span><br />
+
+  <h5><b>devDependencies & Dependencies</b></h5>
+	The normal dependencies are required to run and devDependencies are required only to develop, e.g.: unit tests, 	Coffeescript to Javascript transpilation, minification etc,.<br />
+If you really want to install development packages in that case, you can set the dev config option to true, possibly from the command line as: <br />
+<span class="code"> npm install "$package" --dev</span><br />
+The option is false by default since this is a much less common case.<br /><br />
+The packages listed under dependencies are essential to running the application. <br />The devDependencies are only necessary to develop the application.<br /><br /> They can be excluded from production installations as in this example:
+Including devDependencies within dependencies, as you have it, won't be harmful; the module will just bundle more files (bytes) during the install - consuming more (unnecessary) resources.<br /><br/>
+<h5><b>devDependencies</b></h5>
+The packages listed in the devDependencies section of the package.json help us develop the application. They do not have to be deployed with the production application although there is rarely harm in doing so.<br />
+<br /><b>concurrently</b> - A utility to run multiple npm commands concurrently on OS/X, Windows, and Linux operating systems.<br /><br />
+<b>lite-server</b> - A light-weight, static file server, written and maintained by John Papa with excellent support for Angular apps that use routing.<br /><br />
+<b>typescript</b> - The TypeScript language server including the tsc TypeScript compiler.<br /><br />
+<b>typings</b> - A manager for TypeScript definition files. Learn more about it in the TypeScript Configuration chapter.<br /><br />
+<h5><b>Peer Dependencies</b></h5>
+As we know, packages depend on other packages. For example, our application depends upon the Angular package.<br />
+Two packages, 'A' and 'B', could depend on the same third package 'C'. 'A' and 'B' might both list 'C' among their dependencies.<br /><br />
+The difference between a dependency and a peerDependency is roughly this:<br />
+<span class="code">A dependency says, "I need this thing directly available to me."<br />
+A peerDependency says, "if you want to use me, you need this thing available to you."</span>
+<hr />
+<span class="middle">Additional Information:</span><br /><br />
+
+There are three package categories in the dependencies section of the application package.json:<br /><br />
+<b>Features</b> - Feature packages provide our application with framework and utility capabilities.<br /><br />
+<b>Polyfills</b> - Polyfills plug gaps in the browser's JavaScript implementation.<br /><br />
+<b>Other</b> - Other libraries that support the application such as bootstrap for HTML widgets and styling.<br /><br />
+<h5><b>Feature Packages</b></h5><br />
+<b>@angular/core</b> - Critical runtime parts of the framework needed by every application. Includes all metadata decorators, Component, Directive, dependency injection, and the component lifecycle hooks.<br /><br />
+<b>@angular/common</b> - The commonly needed services, pipes and directives provided by the Angular team.<br /><br />
+<b>@angular/compiler</b> - Angular's Template Compiler. It understand templates and can convert them to code that makes the app run and render. Developers typically don’t interact with the compiler directly. They use it indirectly via platform-browser-dynamic or the offline template compiler.<br /><br />
+<b>@angular/http</b> - Angular's http client.<br /><br />
+<b>@angular/router</b> - Component router.<br /><br />
+<b>@angular/upgrade</b> - Set of utilities for upgrading Angular 1 applications.<br /><br />
+<h5><b>PolyFill Packages</b></h5><br />
+Angular requires certain polyfills in the application environment. We install these polyfills with very specific npm packages that Angular lists in the peerDependencies section of its package.json.<br /><br />
+<b>rxjs</b> - A polyfill for the Observables specification currently before the TC39 committee that determines standards for the JavaScript language. Developers should be able to pick a preferred version of rxjs (within a compatible version range) without waiting for Angular updates.<br />
+<br />
+<b>zone.js</b> - A polyfill for the Zone specification currently before the TC39 committee that determines standards for the JavaScript language. Developers should be able to pick a preferred version of zone.js to use (within a compatible version range) without waiting for Angular updates.<br /><br />
+<h5><b>Other Helper Libraries</b></h5><br />
+<b>angular2-in-memory-web-api</b> - An Angular-supported library that simulates a remote server's web api without requiring an actual server or real http calls. Good for demos, documentation samples, and early stage development (before we even have a server). Learn about it in the Http Client chapter.<br /><br />
+<b>bootstrap</b> - Bootstrap is a popular HTML and CSS framework for designing responsive web apps. Some of the documentation samples improve their appearance with bootstrap.
+</ion-content>

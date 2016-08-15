@@ -7,6 +7,7 @@ import { Page2 } from './pages/page2/page2';
 import { ContactPage } from './pages/contact/contact';
 import { AboutPage } from './pages/about/about';
 import { Ng1 } from "./pages/content/ng1";
+import { Ng4 } from "./pages/content/ng4";
 
 @Component({
   templateUrl: 'build/app.html'
