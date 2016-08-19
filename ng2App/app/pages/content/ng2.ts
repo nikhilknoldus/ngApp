@@ -8,6 +8,7 @@ import { NavController } from "ionic-angular";
 })
 
 export class Ng2{
+
   constructor(private navController:NavController){}
 
 }

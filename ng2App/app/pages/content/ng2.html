@@ -6,12 +6,88 @@
 </ion-navbar>
 <ion-content padding class="common">
 
-  <h5>What is AngularJs 2</h5>
+  <h5>What is AngularJs 2   <ion-icon name="logo-angular"></ion-icon></h5>
   <p>
-    In this section we'll see what actually AngularJs 2 is, the features that makes Ng2 superCool, some code comparisons with basic examples. So lets start.
+    In this section we'll see what actually AngularJs 2 is, the features that makes Ng2 superCool, some code comparisons with basic examples. So lets start. (i'll call AngularJs 2 as Ng2, so whenever you encounter Ng2 get it as AngularJs 2)
   </p>
-
   <p>
-
+    <ion-icon name="logo-angular"></ion-icon>  AngularJs "2" is the latest version of AngularJs, Angular 2.0 was officially announced at the ng-conference in October, 2014. This version won’t be a complex major update, rather a rewrite of the entire framework and will include breaking changes!. <br /><br />
+    <b>Good News</b> for beginners is that they don't have to bother if they haven't learnt AngularJs 1.x and <b>Bad News</b> for those who are experienced or started getting good in previous version but we can't say bad news for them because the :  <br /><br /> <b> Prerequisite</b> : for learning AngularJs 2: <br /><br />
+    <ion-icon name="logo-javascript"></ion-icon>  Javascript<br />
+    <ion-icon name="logo-html5"></ion-icon>  Html<br />
+    <ion-icon name="checkmark-circle-outline"></ion-icon>  MVC Model- Model View Controller (whatever) <br />
+    <ion-icon name="logo-css3"></ion-icon> Css :  Good to know<br />
+    <ion-icon name="paper"></ion-icon> Typescript: AngularJs 2 is supporting different languages like, Typescript, Javascript, Dart so that would be supercool for you if you know Typescript<br />
+    <ion-icon name="car"></ion-icon> OOPs Concepts: This is what you must be knowing already if you are a programmer.<br />
   </p>
+  <br />
+<ion-icon name="play"></ion-icon>  Now go to the next section <b>"AngularJs 1 vs AngularJs 2"</b>: read the points carefully and come back here, then you will be able to map the coming part in this section very easily.
+<hr />
+<br />
+I assume you are coming back here after reading <b>"AngularJs 1 vs AngularJs 2"</b><br /><br />
+<ion-icon name="thumbs-up"></ion-icon> Ng2 is Mobile Oriented, earlier version was not & its modern because its using ES6, typescript as standard. Ng2 official documentation and tutorials are like never before. <br /><br />
+<ion-icon name="thumbs-down"></ion-icon> During the ng-conference there was no mention of a migration path to version 2.0. It was also pointed out that the jump to 2.0 version will lead to broken Angular 1.3 apps, as there won’t be any backwards compatibility. Since then, the developer community has been abuzz with uncertainty and speculation, with some developers questioning if it’s even worth starting a new Angular 1.3 project. <br /><br />
+<hr /><ion-icon name="star"></ion-icon> Now we will look some <b>tec,hnical/programming</b> changes that came into Ng2 and made is superPowerfull. Beginners don't get confuse just focus on the Ng2 syntax (easy life ;) )<br />
+
+<div class="center">
+<ion-icon name="star"></ion-icon>
+</div><br />
+<ion-icon name="thumbs-up"></ion-icon> AngularJs 1.x Controllers and $scope are no more in Ng2.<br /><br />
+<b>AngularJS 1.x syntax:</b> <br />
+<div class="code">
+  var myApp = angular.module("myApp", [])<br />
+.controller("myController", function($scope) {<br />
+         var car = { name: "car1", quantity: 1 };<br />
+         $scope.car = cars;<br />
+});
+</div>
+<br />
+<b>AngularJs 2 syntax:</b><br />
+<div class="code">
+ import &#123;Component&#125; from '@angular/core';<br />
+  @Component(&#123;<br />
+      selector: 'bikesdata',<br />
+      template: '&#123; &#123;bikes.name&#125; &#125;' <br />
+  })<br />
+
+  export class BikeComponent&#123;<br />
+      bikes = &#123; name: 'Bike1', quantity: 1 &#125;<br />
+  &#125;
+</div>
+<br />
+<ion-icon name="thumbs-up"></ion-icon>  Structural directives syntax changed.<br /><br />
+If you have used AngularJs you probably know about ng-repeat, this is structural directive that is now *ngFor (camel case), here esterisk(*) sign is used as prefix for structural directives.<br /><b>AnularJs 1.x</b>
+<br />
+<div class="code">
+    ng-repeat="bike in bikes"
+</div>
+<br />
+<b>AngularJs 2</b>
+<div class="code">
+*ngFor="#bike of bikes"
+</div>
+<br />
+<ion-icon name="thumbs-up"></ion-icon>  Bootstraping angular application syntax changed<br /><br />
+<b>AnularJs 1.x</b><br />
+<div class="code">
+  angular.element(document).ready(function() &#123;
+      angular.bootstrap(document, ['myApp']);
+   &#125;);
+</div>
+<br />
+<b>AngularJs 2</b><br />
+<div class="code">
+import &#123;bootstrap&#125; from 'angular2/platform/browser'; <br />
+import &#123;BikeComponent&#125; from './bike.component'; <br />
+bootstrap(BikeComponent);
+</div>
+<br />
+<ion-icon name="thumbs-up"></ion-icon>  Way of routing syntax changed<br />
+
+Instead of using <b>$routeProvider.when()</b><br /> now we use <br /><b>@RouteConfig{(...})</b>,<br /> we'll discuss this in detail in coming sections.<br />Believe me it's supereasy in Ng2 now. ;)
+<br /><br />
+<ion-icon name="thumbs-up"></ion-icon>  Two way data binding<br /><br />
+Instead of using <b>ng-Model</b> in AnuglarJs 1.x now we use <b>[(ngModel)]</b> <br />We'll see examples of two way data binding in coming sections.
+<br /><br />
+<ion-icon name="logo-whatsapp"></ion-icon> What do you think, is this enough about the introducton of AngularJs 2 ? Give your suggestions from contact section in this app, i'll update accordingly.
 </ion-content>
