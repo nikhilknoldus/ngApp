@@ -1,0 +1,288 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>AngularJs 2</ion-title>
+</ion-navbar>
+
+<ion-content padding class="common">
+
+  <h5> Data Models, Mocks, Refactoring </h5>
+  <p>
+    In this section we are going to learn about proper structuring of our code file
+    For example our main.ts just contain the boostraping our application and loading our first component.
+    <br /><br />
+    Now we will split our code in three files: (earlier we were having it in just two files,   and we could have it in single file ie. main.ts)<br /><br />
+
+    <b>main.ts</b>: Here we'll bootstrap our app & load the first component.<br />
+
+    <b>app.component.ts</b>: Here we will put our page header. (the title. Remember?)<br />
+
+    <b>bike-parts.component.ts</b>: Here we will put the list of bike parts.<br /><br />
+
+    <b><u>Refactoring: Code Organization</u></b><br />
+    <b>main.ts:</b> keep it same as earlier.<br /><br />
+
+    <b>app..component.ts: </b><br />
+
+    <b>
+      <ion-card>
+        <ion-card-content>
+      <!-- import { Component } from '@angular/core';
+
+      @Component({
+
+      	selector: 'my-app',
+      	template: `<h1>Hey Welcome to : {{title}} </h1>`
+      })
+      export class AppComponent {
+      		title = "Bike Rash";
+       }       -->
+        </ion-card-content>
+     </ion-card>
+   </b><br />
+
+   Now the new file,<b>  bike-parts.component.ts</b>: <br />
+   <b>
+     <ion-card>
+       <ion-card-content>
+         <!-- import { Component } from "@angular/core";
+
+       @Component({
+       	selector: 'bike-parts',
+       	template: ` <ul>...</ul> `
+       	})
+
+       export class CarPartComponent{
+
+       	bikeParts = [{...];
+
+       	totalBikeParts() {
+       	...
+       	return sum;
+       	}
+       } -->
+       </ion-card-content>
+    </ion-card>
+  </b><br />
+  Now it wont work, we have to do three things in app.component.ts to make it work.<br />
+
+  <b>1st</b>- Import our new component.<br />
+  <b>2nd</b>- Use our new selector. < bike-parts > <br />
+  <b>3rd</b>- Tell our AppComponent to explicitly use the BikePartComponent. <br />
+
+    So i have done it for you.<br /><br />
+
+    New <b>app.component.ts</b> file is like: <br />
+
+    <b>
+      <ion-card>
+        <ion-card-content>
+          <!--
+          import { Component } from '@angular/core';
+          import { BikePartComponent} from './bike-parts.component' [**1]
+          @Component({
+          	selector: 'my-app',
+          	template: `<h1>Hey Welcome to : {{title}} </h1>
+          				<bike-parts></bike-parts> [**2]`,
+              directives: [BikePartComponent] [**3]
+          })
+          export class AppComponent {
+          		title = "Bike Rash";
+           }
+          NOTICED? The **1, **2 & **3.
+          -->
+        </ion-card-content>
+     </ion-card>
+   </b><br />
+
+ Check your browser the app is again working fine ;). GOTCHA!!<br /><br />
+
+ <b>Remembered ? A component is a type of dircetive & components are meant to be reused, ohh yeahh !! ;)</b><br /><br />
+
+ <b>Summary:</b><br />
+
+We created our first reuasable component & these are building blocks of our app.<br />
+We learned to use directives metadata to list the directives our component uses.
+<br /><br />
+
+<ion-icon name="star"></ion-icon> And now as we have done with the summary of refactoring and think it's done haan!! but do you think it's good to have my html & inline css in my ts file ? Nooohhh not at all. Go get some caffeine.<br /><br />
+
+Let's create two files <b>bike-parts.component.html & bike-parts.component.css.</b><br /><br />
+
+All our html will go inside  <b>bike-parts.component.html</b> and as of now our page is looking ugly so lets write some css and that will go into  <b>bike-parts.component.css</b><br />
+
+<br />now files code:<br /><br />
+
+<b>bike-parts.component.html:</b><br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!--
+        <ul>
+          <li> Total {{totalBikeParts()}} Bike Parts are available</li>
+      	<li *ngFor="let bikePart of bikeParts">
+      		<h2>{{bikePart.name | uppercase}}</h2>
+      		<p class="description">{{bikePart.description}}</p>
+      		<p *ngIf="bikePart.inStock > 0">{{bikePart.inStock}}</p>
+      		<p *ngIf="bikePart.inStock === 0">out of stock</p>
+      		<p class="price"> {{bikePart.price | currency:'USD':true}}</p>
+      	</li>
+      </ul>
+      -->
+    </ion-card-content>
+ </ion-card>
+</b><br /><br />
+
+<b>bike-parts.component.css</b><br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!--
+      .description{
+        font-size:14px;
+        color:blue;
+        }
+
+        .price{
+        font-weight:bold;
+        }
+      -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+
+
+Now as we have take out these code form bike-parts.component.ts, so we have to tell about these files to <b>bike-parts.component.ts</b>, So.<br /><br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!--
+      import { Component } from "@angular/core";
+
+      @Component({
+
+      	selector: 'bike-parts',
+      	templateUrl: 'app/bike-parts.component.html',
+      	styleUrls:['app/bike-parts.component.css']
+      	})
+
+      export class BikePartComponent{
+      ....
+      -->
+    </ion-card-content>
+ </ion-card>
+</b><br /><br />
+
+<b>Now our whole structure is like:</b><br />
+<b>
+  <ion-card>
+    <ion-card-content>
+    -root<br />
+    	---index.html<br />
+    	---app<br />
+    		---- app.component.ts<br />
+    		---- main.ts<br />
+    		---- bike-part.component.ts<br />
+    		---- bike-part.component.css<br />
+    		---- bike-part.component.html<br />
+    </ion-card-content>
+ </ion-card>
+</b><br />
+
+I assume till now you have understood the relevance of each file that we have created, i suggest you to take a “peace break” and come again then recall all files flow. Because the next section is magically life changing by asking me to have a coffee with you :p
+<br /><br />
+Now we are moving further with same plan, we still have some boilerplating here, lets see how we gonna delegate our code to make it really standard.<br /><br />
+<b><u>Mocks & Models: Data Models</u></b><br /><br />
+lets create <b>bike-part.ts</b>, and write the class as like:<br />
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!-- export class BikePart{
+    	id: number;
+    	name: string;
+    	description: string;
+    	inStock: number;
+    	price:number;
+    } -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+
+Now for using this model in <b>bike-part.component.ts</b> first import this model as:<br />
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!-- import { BikePart } from './bike-part' -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+
+Now one more thing as we have static data and we have changed the model name as BikePart to tell typescript to treat this like and array of BikeParts. So,<br />
+
+in <b>bike-part.component.ts:</b><br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!--
+          bikeParts: BikePart[] = [{
+    		"id":1,
+    		"name": "SuperTyres",
+    		"description":"Very best rubber typres",
+    		"inStock": 4,
+    		"price": 24.9808
+    	},
+    	{
+    		"id":2,
+    		...
+      -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+Now earlier i said currently we are using mock data but that usually comes from some sort of API service, so lets separate that data into mock.ts file:<br />
+
+so <b>mock.ts</b><br />
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!-- import {BikePart} from './bike-parts';<br />
+
+      export const BIKEPART: BikePart[]=[{...}];    -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+   notice here we have used const instead of let, this is an ES2015 feature that makes sure BIKEPART can't be reassigned.
+  <br /><br />
+  <b>*Here ngOnInit()</b> is invoked after the component is constructed and its the best place to initiliaze the propery values.<br />
+
+  <b>In bike-part.component.ts</b><br />
+
+  <b>
+    <ion-card>
+      <ion-card-content>
+        <!-- import {BIKEPART} from './mock';
+      	...
+      	bikeParts: BikePart[];
+
+      	ngOnInit(){
+      		this.bikeParts= BIKEPART;
+      	}
+      	...
+ -->
+      </ion-card-content>
+   </ion-card>
+  </b><br />
+
+ Now here comes the <b> Summary of level 3:</b><br />
+
+ 1- In typescript we can use classes to model our data<br />
+ 2- It's a good practice to keep your mock data separate from component and model (class).
+
+
+
+</p>
+</ion-content>

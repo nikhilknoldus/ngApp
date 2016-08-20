@@ -1,0 +1,147 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Index</ion-title>
+</ion-navbar>
+
+<ion-content padding class="common">
+  <h3>Directives, Pipes & Methods</h3>
+
+  <br />
+  <b>Directive:</b> A directive (in angular) is how we add dynamic behavior to html. <br />
+ <br />
+<b> Basically kinds of three:</b> <br />
+
+	1- Component: (has a template so kind a directive)<br />
+	2- Structural Directive <br />
+	3- Attribute Directives <br />
+  <br />
+  2)- Structural Directive:<br /><br />
+	Alters layout by adding, removing or replacing HTML elements.
+	ie.  ngIf, ngFor etc.<br />
+Example for Structural Directives: ngIf and ngFor<br /><br />
+<b>
+  <ion-card>
+    <ion-card-content>
+      import &#123; Component &#125; from &#39;&#64;angular&#47;core&#39;&#59;<br />
+<br />
+&#64;Component&#40;&#123;<br />
+selector: 'my-app',<br />
+template: `&#60;h&#49;&#62; Hey Welcome to : &#123;&#123;title&#125;&#125; &#60;&#47;h&#49;&#62;<br />
+<!-- <ul>
+	<li *ngFor="let bikePart of bikeParts
+		<h2>{{bikePart.name}}</h2>
+		<p>{{bikePart.description}}</p>
+		<p *ngIf="bikePart.inStock > 0">{{bikePart.inStock}}</p>
+		<p *ngIf="bikePart.inStock === 0">out of stock</p>
+	</li>
+</ul> -->
+<br />
+export class AppComponent &#123;<br />
+&#9;title &#61; &#34;Bike
+Rash&#34;&#59;<br />
+<br />
+&#9;carParts &#61; &#91;&#123;<br />
+&#9;&#9;&#34;id&#34;&#58;&#49;&#44;<br />
+&#9;&#9;&#34;name&#34;&#58; &#34;SuperTyres&#34;&#44;<br />
+&#9;&#9;&#34;description&#34;&#58;&#34;Very best rubber
+typres&#34;&#44;<br />
+&#9;&#9;&#34;inStock&#34;&#58; &#52;&#44;<br />
+&#9;&#9;&#8220;price&#8221;&#58; &#57;&#52;&#46;&#55;&#57;&#56;&#56;<br />
+&#9;&#125;&#44;<br />
+&#9;&#123;<br />
+&#9;&#9;&#34;id&#34;&#58;&#50;&#44;<br />
+&#9;&#9;&#34;name&#34;&#58; &#34;Super Seat&#34;&#44;<br />
+&#9;&#9;&#34;description&#34;&#58;&#34;Very best
+seat&#34;&#44;<br />
+&#9;&#9;&#34;inStock&#34;&#58; &#53;&#44;<br />
+&#9;&#9;&#8220;price&#8221;&#58; &#50;&#56;&#46;&#57;&#56;&#48;&#56;<br />
+&#9;&#125;&#44;<br />
+&#9;&#123;<br />
+&#9;&#9;&#34;id&#34;&#58;&#51;&#44;<br />
+&#9;&#9;&#34;name&#34;&#58; &#34;Super Light&#34;&#44;<br />
+&#9;&#9;&#34;description&#34;&#58;&#34;This is
+really powered light&#34;&#44;<br />
+&#9;&#9;&#34;inStock&#34;&#58; &#48;&#44;<br />
+&#9;&#9;&#8220;price&#8221;&#58; &#50;&#52;&#46;&#57;&#56;&#48;&#56;<br />
+&#9;&#125;&#93;&#59;<br />
+ &#125;<br />
+    </ion-card-content>
+  </ion-card>
+</b>
+<br />Here if you notice we have used ngIf and ngFor. The usage are simple to understand.<br /><br />
+Using ngIf what we are doing here is just replacing the, “0” from stock availablility by “Out of stock”. ngFor is used to repeat the object array.
+<br /><br />
+<b>Pipes</b><br /><br />
+Use offical documentation to look up different kinds of pipes:<br />
+open: http://www.angular.io, click last left menu option “API Reference” type pipes in search box, here we go.<br /><br />
+
+Lets use uppercase & currency pipe:<br />
+
+We want to show the Bike Part name in uppercase automatically and the price is showing 4 digits after decimal so isn't looking good, that will look good if we put currency symbol so for that we have to put two pipes in the template:<br /><br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!--
+      <ul>
+      	<li *ngFor="let bikePart of bikeParts
+      	    <h2>{{bikePart.name | uppercase}}</h2>
+      	    <p>{{bikePart.description}}</p>
+      	    <p *ngIf="bikePart.inStock > 0">{{bikePart.inStock}}</p>
+      	    <p *ngIf="bikePart.inStock === 0">out of stock</p>
+      	    <p>{{bikePart.price | currency:EUR':true}}</p>
+      	</li>
+      </ul> -->
+   </ion-card-content>
+</ion-card>
+</b>
+<br />
+There are other useful pipes available that you can check on the above given link.
+ie. lowercase, date, number, decimal, json, replace, slice etc.<br /><br />
+*You can create your own custom pipes also. (that we are not discussing in this section).
+<br /><br />
+
+<b>Methods:</b><br />
+
+For using methods lets create a scenario to count the total number of bikeParts.
+The json data we created above contains 3 bike parts as we know.<br /><br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!-- import { Component } from '@angular/core';
+      @Component({
+      	selector: 'my-app',
+      	template: `<h1>Hey Welcome to : {{title}} </h1>
+      				<ul>
+      					<li> Total {{totalBikeParts()}} Bike Parts are available</li>
+      					<li *ngFor="let bikePart of bikeParts">
+      						...
+      					</li>
+      				</ul>`
+      })
+      export class AppComponent {
+      	title = "Bike Rash";
+      	bikeParts = [{...}];
+      	totalBikeParts(){
+      		let sum = 0;
+      		for(let totalParts of this.bikeParts){
+      		sum = sum + totalParts.inStock;
+      		}
+      		return sum;
+      	}
+       } -->
+ </ion-card-content>
+</ion-card>
+</b>
+<br />
+<b>Output</b><br />
+Total 9 Bike Parts are available
+<br /><br />
+<b>Summary:</b><br />
+We learned how to use pipes to transform our output.<br />
+We learned how to create and use methods in our component.
+
+</ion-content>

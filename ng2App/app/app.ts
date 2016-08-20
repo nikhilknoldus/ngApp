@@ -9,6 +9,8 @@ import { AboutPage } from './pages/about/about';
 import { Ng1 } from "./pages/content/ng1";
 import { Ng4 } from "./pages/content/ng4";
 import { Ng3 } from "./pages/content/ng3";
+import { Lv1 } from "./pages/content/lv1";
+import { Lv2 } from "./pages/content/lv2";
 
 @Component({
   templateUrl: 'build/app.html'

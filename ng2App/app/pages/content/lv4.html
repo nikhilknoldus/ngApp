@@ -1,0 +1,227 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>AngularJs 2</ion-title>
+</ion-navbar>
+<ion-content padding class="common">
+
+  <h5>Data Binding</h5>
+  <p>
+
+   <b><u>Property & class binding:</u></b> <br /><br />
+     <b>javascript ===> html</b>
+   <br /><br />
+
+Lets take a scenario, here you have a list of bike parts, now you want to highlight those parts (list) which are in stock, here comes the role of class binding.<br /><br />
+
+Example:<br />
+
+i have a class .available this adds some styles to only those parts which are in stock. So<br />
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!-- <ul>
+          <li> Total {{totalBikeParts()}} Bike Parts are available</li>
+      	<li *ngFor="let bikePart of bikeParts" [class.available]=”bikePart.inStock”>
+      		<h2>{{bikePart.name | uppercase}}</h2>
+      		<p class="description">{{bikePart.description}}</p>
+      		<p *ngIf="bikePart.inStock > 0">{{bikePart.inStock}}</p>
+      		<p *ngIf="bikePart.inStock === 0">out of stock</p>
+      		<p class="price"> {{bikePart.price | currency:'USD':true}}</p>
+      	</li>
+      </ul> -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+see how that incredible scenario is resolved so easily. <br />
+*considering boolean property to inStock here only.
+
+<br /><br />
+<b><u>Event Binding:</u></b> mouse click, hover or key press etc.<br />
+
+<b>html ===> javascript</b><br /><br />
+Take a scenario, you have list of parts, for every part to buy you can increase and decrease the quantity by clicking + (plus) and – (minus) buttons, for that you have to create two functions, so add “quantity” property to the bike-part model<br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!-- export class BikePart{
+            	id: number;
+            	name: string;
+            	description: string;
+            	inStock: number;
+            	price:number;
+            	quantity:number;
+            } -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+
+now goto mocks and set all quantity to 0.
+<br />
+go to <b>bike-part.component.ts</b> and add functions:<br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!--...
+          export class BikePart{
+           ....
+            plusQuantity(bikePart){
+              //i hope this time i'm in love ;) easy
+          	bikePart.quantity++;
+          } -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+<b>bike-part.component.html</b>
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!--
+                <ul>
+              ...
+             <li *ngFor="let bikePart of bikeParts" [class.available]=”bikePart.inStock">
+          <h2>{{bikePart.name | uppercase}}</h2>
+          ...
+          <button class=”minusSign” (click)=”minusQuantity()”>-</button>
+            <span>{{bikePart.quantity}}</span>
+          <button class=”plusSign” (click)=”plusQuantity(bikePart)”>+</button>
+          ...
+             </li>
+          </ul> -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+
+But do you notice one thing, i can increase the number of quantity more that the availability (inStock), but user should be able to increase quantity not more than the quantity is in-stock, lets edit bike-part.component.ts<br /><br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!--
+                ...
+          export class BikePart{
+          ....
+          plusQuantity(bikePart){
+          //i hope this time i'm in love with her ;) easy
+          if(bikePart.quantity > bikePart.inStock) bikePart.quantity++;
+          } -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+Now i want you to make it for decrease the quantity.
+<br /><br />
+Use can use other events also like (click) that we used.
+<br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!--
+      *<div (mouseover)=”blah()”>
+      *<div (blue)=”blah()”>
+      *<div (focus)=”blah()”>
+      *<form (submit)=”blah()”> etc
+      -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+For further evens like if you want to know which key pressed you can do like:<br />
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!--
+              <input (keydown)=”showKey($event)”>
+
+        showKey(event){
+        	alert(event.keyCode);bike-part.component.html
+        }
+      -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+<br />
+
+<b><u>Two-Way Binding: with and without ngModel</u></b> <br /><br />
+Earlier we have seen property and class binding these both were single binding, so lets start with Two-way binding.
+
+Take our quantity field, where we are having two button plus (+) and minu (-) to increase and decrease the quantity, and in between them we have a input box that shows the quantity. Here add one more thing, user can enter quantity directly without using button (- & +).
+but suppose you entered 5 and pressed either button then it will start from zero, but it should start with 5. lets code.
+
+<br /><br />
+<b>bike-part.component.html</b>
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!--
+                  <ul>
+            ...
+            <li *ngFor="let bikePart of bikeParts" [class.available]=”bikePart.inStock">
+            <h2>{{bikePart.name | uppercase}}</h2>
+            ...
+            <button class=”minusSign” (click)=”minusQuantity()”>-</button>
+            <span>{{bikePart.quantity}}</span>
+            <input type=”text” [value]=”bikePart.quantity”
+            (input) = “bikePart.quantity = $event.target.value”>
+            <button class=”plusSign” (click)=”plusQuantity(bikePart)”>+</button>
+            ...
+            </li>
+            </ul>
+      -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+
+But did you really liked what we just coded :/ ? No, at-least i'm not. Lets write less code and save time to make a coffee for your ... ;)<br /><br />
+
+<b>bike-part.component.html</b><br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      <!--
+                <ul>
+          ...
+          <li *ngFor="let bikePart of bikeParts" [class.available]=”bikePart.inStock">
+          <h2>{{bikePart.name | uppercase}}</h2>
+          ...
+          <button class=”minusSign” (click)=”minusQuantity()”>-</button>
+          <span>{{bikePart.quantity}}</span>
+          <input type=”text” [(ngModel)]=”bikePart.quantity>
+          <button class=”plusSign” (click)=”plusQuantity(bikePart)”>+</button>
+          ...
+          </li>
+          </ul>
+      -->
+    </ion-card-content>
+ </ion-card>
+</b><br />
+
+<br />
+
+<b><span class="center">Damn !! Mission accomplished here.</span></b>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </p>
+</ion-content>

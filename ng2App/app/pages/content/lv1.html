@@ -1,0 +1,100 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>AngularJs 2</ion-title>
+</ion-navbar>
+<ion-content padding class="common">
+
+  <h5>First Component: Beginning Ng2</h5>
+  <p>
+  If you are a beginner and learning Angular first time, you have to work a bit hard but don't worry we will decompose every concept to the smallest to make it more understandable.
+  <br /> <br />
+<b> <ion-icon name="cafe"></ion-icon> I will show the output but not showing it in the browser window here, because that you have to do to learn it better, so better is to use these code snippets yourself and try out what happens.<br /><br /></b>
+
+We will use typescript further in examples, so <br /><br />
+<b>Typescript</b>:<br />
+Typescript is Microsoft extension of javascript that allows to use of all ES2015 features. Like type checking and object oriented features. Extension for typescript file is .ts, know more on typescriptlang.org.
+<br /><br />
+<b>Transpiling :</b><br />
+Our browser doesn't know to read typescript so we have to convert it into javascript, we have two options:<br />
+
+1- transpile to javascript in the browser.<br />
+2- transpile to javascript before shipping to browser.<br />
+We're choosing with the second option becuase we don't want to overhead the browser work and delay loading our app on user end.<br />
+<br /><br />
+
+<b>Hello AngularJs-2</b> we have to print this in browser using AngularJs-2 so lets create our first Ng2 app.<br />
+We'll create 3 basic examples <br /><br />
+
+ 1- In this example we will render our html inside the <b>template</b> under Component.<br />
+
+ Let's start with the <b>Component</b>. <br /><br />
+
+<b>app.component.ts</b><br />
+<b>
+  <ion-card>
+    <ion-card-content>
+      &#46;import &#123;Component&#125; from
+      &#39;&#64;angular&#47;core&#39;&#59;<br />
+        &#64;Component&#40;&#123;&#59;<br />
+        &#9;selector&#58; &#39;first&#45;app&#39;&#44;<br />
+       &#9;template&#58; &#39;&#60;h&#49;&#62;Hello AngularJs&#45;&#50;&#60;&#47;h&#49;&#62;&#39;<br />
+        &#125;&#41;
+   </ion-card-content>
+  </ion-card>
+</b>
+ <br />
+<b>Component</b> is the basic block of Ng2 app as like controller in Ng1.x.<br />
+
+The basic structure of application you have already seen in 5min Quickstart. <br />
+<b>main.ts</b><br />
+This file is the starting point of our application, because it starts/boost our app.ts file, which is first file in our case. <br />
+<b>
+<ion-card>
+  <ion-card-content>
+    import &#123;bootstrap&#125; from  &#39;&#64;angular&#47;platform&#45;browser&#45;dynamic&#39;&#59;<br />
+    import &#123;AppComponent&#125;
+    from &#39;&#46;&#47;app&#46;component&#39;&#59;<br />
+    bootstrap&#40;AppComponent&#41;&#59;
+</ion-card-content>
+</ion-card>
+</b>
+<br />
+2- Now we will saperate the inline html into another html file and will call it in app.component.ts, rest of the things will be same<br />
+<b>
+<ion-card>
+  <ion-card-content>
+    import &#123; Component &#125; from &#39;&#64;angular&#47;core&#39;&#59;<br />
+    &#64;Component&#40;&#123;<br />
+    &#9;selector&#58;
+    &#39;my&#45;app&#39;&#44;<br />
+    &#9;templateUrl&#58; &#39;index&#46;html&#39;<br />
+    &#125;&#41;<br />
+    export class AppComponent&#123; &#125;
+</ion-card-content>
+</ion-card></b>
+<br /><br />
+3- Now put some dynamic data in the template so for that add an attribute in class AppComponent, like:<br />
+<b>
+<ion-card>
+  <ion-card-content>
+    &#64;Component&#40;&#123;<br />
+  &#9;selector&#58; &#39;my&#45;app&#39;&#44;<br />
+  &#9;template&#58; &#39;&#60;h&#50;&#62; &#123; &#123; title &#125; &#125; &#60;&#47;h&#50;&#62;&#39;<br />
+  &#125;&#41;<br />
+  export class AppComponent&#123; <br />
+  &#9;title
+  &#61; &#8221;Hey this is dynamic Hello
+  NG&#50;&#8221;&#46;<br />
+  &#125;
+  </ion-card-content>
+</ion-card></b>
+<br />
+</p>
+<b>Summary</b><br />
+<ion-icon name="star"></ion-icon> Here we have seen create simple application in Ng2.<br />
+<ion-icon name="star"></ion-icon> Used template and templateUrl. <br />
+<ion-icon name="star"></ion-icon> Putting dynamic content using class properties.<br />
+
+</ion-content>
