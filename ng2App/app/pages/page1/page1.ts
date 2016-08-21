@@ -6,11 +6,14 @@ import { Ng4 } from "../content/ng4";
 import { Ng6 } from "../content/ng6";
 import  { Ng3 } from "../content/ng3";
 import { Ng2 } from "../content/ng2";
+import { Ng5 } from "../content/ng5";
+
 import { Lv1 } from "../content/lv1";
 import { Lv2 } from "../content/lv2";
 import { Lv3 } from "../content/lv3";
 import { Lv4 } from "../content/lv4";
 import { Lv5 } from "../content/lv5";
+import { Lv6 } from "../content/lv6";
 
 @Component({
   templateUrl: 'build/pages/page1/page1.html'
@@ -40,6 +43,9 @@ export class Page1 {
     this.navController.push(Ng4);
   }
 
+  ng5(){
+    this.navController.push(Ng5);
+  }
   //dependencies, package json
   ng6(){
     this.navController.push(Ng6);
@@ -68,5 +74,8 @@ export class Page1 {
     lv5(){
       this.navController.push(Lv5);
     }
-
+  //level 6
+    lv6(){
+      this.navController.push(Lv6);
+    }
 }

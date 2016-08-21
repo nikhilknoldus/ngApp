@@ -18,22 +18,10 @@ Lets take a scenario, here you have a list of bike parts, now you want to highli
 Example:<br />
 
 i have a class .available this adds some styles to only those parts which are in stock. So<br />
-<b>
-  <ion-card>
-    <ion-card-content>
-      <!-- <ul>
-          <li> Total {{totalBikeParts()}} Bike Parts are available</li>
-      	<li *ngFor="let bikePart of bikeParts" [class.available]=”bikePart.inStock”>
-      		<h2>{{bikePart.name | uppercase}}</h2>
-      		<p class="description">{{bikePart.description}}</p>
-      		<p *ngIf="bikePart.inStock > 0">{{bikePart.inStock}}</p>
-      		<p *ngIf="bikePart.inStock === 0">out of stock</p>
-      		<p class="price"> {{bikePart.price | currency:'USD':true}}</p>
-      	</li>
-      </ul> -->
-    </ion-card-content>
- </ion-card>
-</b><br />
+
+  <button small (click)="view1()">L4: code#1</button>
+
+<br />
 see how that incredible scenario is resolved so easily. <br />
 *considering boolean property to inStock here only.
 
@@ -46,14 +34,15 @@ Take a scenario, you have list of parts, for every part to buy you can increase 
 <b>
   <ion-card>
     <ion-card-content>
-      <!-- export class BikePart{
-            	id: number;
-            	name: string;
-            	description: string;
-            	inStock: number;
-            	price:number;
-            	quantity:number;
-            } -->
+      export class BikePart&#123;<br />
+          &#9;id&#58; number&#59;<br />
+           &#9;name&#58; string&#59;<br />
+            &#9;description&#58; string&#59;<br />
+             &#9;inStock&#58;
+        number&#59;<br />
+        &#9;price&#58;number&#59;<br />
+        &#9;quantity&#58;number&#59;<br />
+        &#125;
     </ion-card-content>
  </ion-card>
 </b><br />
@@ -65,13 +54,14 @@ go to <b>bike-part.component.ts</b> and add functions:<br />
 <b>
   <ion-card>
     <ion-card-content>
-      <!--...
-          export class BikePart{
-           ....
-            plusQuantity(bikePart){
-              //i hope this time i'm in love ;) easy
-          	bikePart.quantity++;
-          } -->
+      export class BikePart&#123;<br />
+         &#46;&#46;&#46;&#46;<br />
+         plusQuantity&#40;bikePart&#41;&#123;<br />
+           &#47;&#47;i
+        hope this time i&#39;m in love
+        &#59;&#41; easy<br />
+           &#9;bikePart&#46;quantity&#43;&#43;&#59;<br />
+         &#125;
     </ion-card-content>
  </ion-card>
 </b><br />
@@ -80,18 +70,7 @@ go to <b>bike-part.component.ts</b> and add functions:<br />
 <b>
   <ion-card>
     <ion-card-content>
-      <!--
-                <ul>
-              ...
-             <li *ngFor="let bikePart of bikeParts" [class.available]=”bikePart.inStock">
-          <h2>{{bikePart.name | uppercase}}</h2>
-          ...
-          <button class=”minusSign” (click)=”minusQuantity()”>-</button>
-            <span>{{bikePart.quantity}}</span>
-          <button class=”plusSign” (click)=”plusQuantity(bikePart)”>+</button>
-          ...
-             </li>
-          </ul> -->
+      <button small (click)="view1()">L4: code#2</button>
     </ion-card-content>
  </ion-card>
 </b><br />
@@ -101,14 +80,15 @@ But do you notice one thing, i can increase the number of quantity more that the
 <b>
   <ion-card>
     <ion-card-content>
-      <!--
-                ...
-          export class BikePart{
-          ....
-          plusQuantity(bikePart){
-          //i hope this time i'm in love with her ;) easy
-          if(bikePart.quantity > bikePart.inStock) bikePart.quantity++;
-          } -->
+        &#46;&#46;&#46;<br />
+        export class BikePart&#123;<br />
+        &#46;&#46;&#46;&#46;<br />
+        plusQuantity&#40;bikePart&#41;&#123;<br />
+        &#47;&#47;i hope
+        this time i&#39;m in love with
+        her &#59;&#41; easy<br />
+        if&#40;bikePart&#46;quantity &#62; bikePart&#46;inStock&#41; bikePart&#46;quantity&#43;&#43;&#59;<br />
+        &#125;
     </ion-card-content>
  </ion-card>
 </b><br />
@@ -120,12 +100,10 @@ Use can use other events also like (click) that we used.
 <b>
   <ion-card>
     <ion-card-content>
-      <!--
-      *<div (mouseover)=”blah()”>
-      *<div (blue)=”blah()”>
-      *<div (focus)=”blah()”>
-      *<form (submit)=”blah()”> etc
-      -->
+      &#42;&#60;div &#40;mouseover&#41;&#61;&#8221;blah&#40;&#41;&#8221;&#62;<br />
+       &#42;&#60;div &#40;blue&#41;&#61;&#8221;blah&#40;&#41;&#8221;&#62;<br />
+       &#42;&#60;div &#40;focus&#41;&#61;&#8221;blah&#40;&#41;&#8221;&#62;<br />
+       &#42;&#60;form &#40;submit&#41;&#61;&#8221;blah&#40;&#41;&#8221;&#62; etc
     </ion-card-content>
  </ion-card>
 </b><br />
@@ -133,13 +111,11 @@ For further evens like if you want to know which key pressed you can do like:<br
 <b>
   <ion-card>
     <ion-card-content>
-      <!--
-              <input (keydown)=”showKey($event)”>
-
-        showKey(event){
-        	alert(event.keyCode);bike-part.component.html
-        }
-      -->
+      &#60;input &#40;keydown&#41;&#61;&#8221;showKey&#40;&#36;event&#41;&#8221;&#62;<br />
+    <br />
+      showKey&#40;event&#41;&#123;<br />
+      &#9;alert&#40;event&#46;keyCode&#41;&#59;bike&#45;part&#46;component&#46;html<br />
+      &#125;
     </ion-card-content>
  </ion-card>
 </b><br />
@@ -157,21 +133,7 @@ but suppose you entered 5 and pressed either button then it will start from zero
 <b>
   <ion-card>
     <ion-card-content>
-      <!--
-                  <ul>
-            ...
-            <li *ngFor="let bikePart of bikeParts" [class.available]=”bikePart.inStock">
-            <h2>{{bikePart.name | uppercase}}</h2>
-            ...
-            <button class=”minusSign” (click)=”minusQuantity()”>-</button>
-            <span>{{bikePart.quantity}}</span>
-            <input type=”text” [value]=”bikePart.quantity”
-            (input) = “bikePart.quantity = $event.target.value”>
-            <button class=”plusSign” (click)=”plusQuantity(bikePart)”>+</button>
-            ...
-            </li>
-            </ul>
-      -->
+     <button small (click)="view1()">L4: code#3</button>
     </ion-card-content>
  </ion-card>
 </b><br />
@@ -183,20 +145,7 @@ But did you really liked what we just coded :/ ? No, at-least i'm not. Lets writ
 <b>
   <ion-card>
     <ion-card-content>
-      <!--
-                <ul>
-          ...
-          <li *ngFor="let bikePart of bikeParts" [class.available]=”bikePart.inStock">
-          <h2>{{bikePart.name | uppercase}}</h2>
-          ...
-          <button class=”minusSign” (click)=”minusQuantity()”>-</button>
-          <span>{{bikePart.quantity}}</span>
-          <input type=”text” [(ngModel)]=”bikePart.quantity>
-          <button class=”plusSign” (click)=”plusQuantity(bikePart)”>+</button>
-          ...
-          </li>
-          </ul>
-      -->
+    <button small (click)="view1()">L4: code#4</button>
     </ion-card-content>
  </ion-card>
 </b><br />
@@ -204,23 +153,6 @@ But did you really liked what we just coded :/ ? No, at-least i'm not. Lets writ
 <br />
 
 <b><span class="center">Damn !! Mission accomplished here.</span></b>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   </p>

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { InAppBrowser } from 'ionic-native';
+
+var filePath = "http://www.amazon.in/registry/wishlist/1NYIMSECVGTNH";
 
 /*
   Generated class for the ContactPage page.
@@ -12,4 +15,8 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
   constructor(private nav: NavController) {}
+
+  wishlist() {
+           InAppBrowser.open(filePath, '_blank', 'location=yes');
+        }
 }

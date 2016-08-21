@@ -13,15 +13,237 @@
 
   Services are used to share code across the app.<br />
 
-  So in our <b>bike-part.component.ts</b> file we will use <b>bikeData.service.ts</b> and this file will bring data from mock.ts, let's just start<br />
+  So in our <b>bike-part.component.ts</b> file we will use <b>bikeData.service.ts</b> and this file will bring data from <b>mock.ts</b>, let's just start<br />
 
   I know it's still confusing so far, so for removing this sucking confusion let's get to know what is dependenyInjection.<br />
 
   A dependency injector is in-charge of knowing how to create and send data.<br />
   <br />
   Let's know by doing it.
+<br />
+<b>bikeData.service.ts</b><br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      import &#123;BIKEPARTS&#125; from &#39;&#46;&#47;mocks&#39;&#59;<br />
+       export class BikePartDataService&#123;<br />
+     getBikeParts&#40;&#41;&#123;<br />
+     return BIKEPARTS&#59;<br />
+    &#125;<br />
+    &#125;
+
+    </ion-card-content>
+ </ion-card>
+</b><br /><br />
+<b>bike-part.component.ts</b><br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+
+     import &#123;BikePartDataService&#125; from &#8220;&#46;&#47;bikeData&#46;service&#8221;<br />
+     &#46;&#46;&#46;<br />
+     export class CarPartComponent&#123;<br />
+     bikeParts &#61; BIKEPART&#91;&#93;&#59;<br />
+     &#9;ngOnInit&#123;<br />
+     &#9;&#9;let bikePartDataService &#61;
+     new BikePartDataService&#40;&#41;&#59;<br />
+     &#9;&#9;this&#46;bikeParts &#61; bikePartDataService&#46;getBikeParts&#40;&#41;&#59;<br />
+     &#9;&#125;<br />
+     &#125;
+
+    </ion-card-content>
+ </ion-card>
+</b><br /><br />
+
+Now we have to convert our service into an Injector;<br />
+
+so,
+<br />
+<b>bikeData.service.ts</b><br />
+<b>
+  <ion-card>
+    <ion-card-content>
+
+        import {BIKEPARTS} from './mocks';
+        import {injectable} from '@angular/core';
+        @Injectable()
+        export class BikePartDataService{
+           getBikeParts(){a    		return BIKEPARTS;
+         	}
+        }
+    </ion-card-content>
+ </ion-card>
+</b><br /><br />
+
+So now we want to know our whole application about this service, what do you think let's goto the root of application, AppComponent.<br /><br />
+
+<b>app.component.ts</b><br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      ...<br />
+      import &#123; BikePartDataService &#125; from &#39;&#46;&#47;bikeData&#46;service&#46;ts&#39;&#59;<br />
+     &#46;&#46;&#46;<br />
+     &#46;&#46;&#46;<br />
+      &#64;Component&#40;&#123;<br />
+      selector&#58;
+      &#39;my&#45;app&#39;&#44;<br />
+      template&#58; &#96;&#60;h&#49;&#62;Welcome&#58; &#123;&#123;title&#125;&#125; &#60;&#47;h&#49;&#62;&#60;bike&#45;parts&#62;&#60;&#47;bike&#45;parts&#62;&#96;&#44;<br />
+      directives&#58; &#91;BikePartComponent&#93;&#44;<br />
+      providers&#58; &#91;BikePartDataService&#93;<br />
+     &#125;&#41;<br />
+
+    </ion-card-content>
+ </ion-card>
+</b>
+<br />
+<b><u>Injecting Dependency</u></b><br />
+
+<b>bike-part.component.ts</b><br />
+<b>
+  <ion-card>
+    <ion-card-content>
+      &#46;&#46;&#46;<br />
+        import &#123;
+        BikePartDataService &#125; from &#39;&#46;&#47;bikeData&#46;service&#46;ts&#39;&#59;<br />
+        &#64;Component&#40;&#123;&#46;&#46;&#46;&#46;&#125;&#41;&#59;<br />
+        export class BikePartComponent&#123;<br />
+        &#9;&#46;&#46;&#46;<br />
+        bikeParts&#58;
+        BIKEPART&#91;&#93;&#59;<br />
+        constructor &#40;private bikePartDataService&#58;  BikePartDataService&#41;&#123;&#125;
+        &#9;ngOnInit&#123;&#9;&#9;&#9;this&#46;bikeParts&#61; this&#46;bikePartDataService&#46;getBikeParts&#40;&#41;&#59;<br />
+        &#9;&#9;&#125;<br />
+        &#125;
+    </ion-card-content>
+ </ion-card>
+</b><br /><br />
+
+<b><u>HTTP:</u></b><br />
+
+Here we go, time to use real data not the mock data in our service, real data mean data coming from server/internet.<br />
+
+So lets start.<br />
+
+Create <b>bike-parts.json</b><br />
+<b>
+  <ion-card>
+    <ion-card-content>
+      &#123;<br />
+    &#9;data&#61; &#91;<br />
+     &#9;&#123;<br />
+   &#9;&#9;&#34;id&#34;&#58;&#49;&#44;<br />
+   &#9;&#9;&#34;name&#34;&#58; &#34;SuperTyres&#34;&#44;<br />
+    &#9;&#9;&#34;description&#34;&#58;&#34;Very best rubber typres&#34;&#44;<br />
+     &#9;&#9;&#34;inStock&#34;&#58;
+    &#52;&#44;<br />
+    &#9;&#9;&#34;price&#34;&#58; &#50;&#52;&#46;&#57;&#56;&#48;&#56;&#44;<br />
+     &#9;&#9;&#8220;quantity&#8221;&#58;
+    &#54;<br />
+    &#9;&#125;&#44;<br />
+    &#9;&#123;<br />
+    &#9;&#9;&#34;id&#34;&#58;&#50;&#44;<br />
+    &#9;&#9;&#46;&#46;&#46;&#125;<br />
+    &#93;<br />
+    &#125;
+    </ion-card-content>
+ </ion-card>
+</b><br /><br />
+
+Now for using Http we have to inlucde it, lets move on to <b>app.component.ts</b><br />
+<b>
+  <ion-card>
+    <ion-card-content>
+
+      ...<br />
+
+        import &#123; BikePartDataService &#125; from &#39;&#46;&#47;bikeData&#46;service&#46;ts&#39;&#59;<br />
+        import &#123; HTTP&#95;PROVIDERS
+        &#125; from &#39;&#64;angular&#47;http&#39;&#59;<br />
+        &#46;&#46;&#46;<br />
+        &#64;Component&#40;&#123;<br />
+        selector&#58; &#39;my&#45;app&#39;&#44;<br />
+        template&#58; &#96;&#60;h&#49;&#62;Welcome&#58; &#123;&#123;title&#125;&#125; &#60;&#47;h&#49;&#62;&#60;bike&#45;parts&#62;&#60;&#47;bike&#45;parts&#62;&#96;&#44;<br />
+        directives&#58; &#91;BikePartComponent&#93;&#44;<br />
+        providers&#58; &#91;BikePartDataService&#44; HTTP&#95;PROVIDERS&#93;<br />
+        &#125;&#41;<br />
+
+    </ion-card-content>
+ </ion-card>
+</b><br /><br />
+
+Now move on to <b>bikeData.service.ts</b><br />
+<b>
+  <ion-card>
+    <ion-card-content>
+
+      import &#123;BIKEPARTS&#125; from &#39;&#46;&#47;mocks&#39;&#59;<br />
+    import &#123;injectable&#125; from
+    &#39;&#64;angular&#47;core&#39;&#59;<br />
+
+    &#64;Injectable&#40;&#41;<br /><br />
+    export class BikePartDataService&#123;<br /><br />
+    &#9;getBikeParts&#40;&#41;&#123;<br />
+    &#9;&#9;return BIKEPARTS&#59;<br />
+    &#9;&#125;<br />
+    &#125;
+    </ion-card-content>
+ </ion-card>
+</b><br /><br />
+
+<b>What's going on here ???</b><br />
+the get method is fetching our json file, you might expect get to return a promise, but this return an observable. Observables give us additional functionality on our http calls- one of which is to treat the return value like an array.
+<br /><br />
+return.json() using to parse each response string into json.
+<br /><br />
+.data is a part of json (we create array in json under which we can access each object)
+<br /><br />
+< BikePart[] > we are telling typscript compiler to treat this like an array.
+<br /><br />
 
 
-  </p>
+Now change our <b> bike-part.component.ts </b>as per the http<br />
+
+<b>
+  <ion-card>
+    <ion-card-content>
+      ...<br />
+      export class BikePartComponent&#123;<br />
+      constructor &#40;private bikePartDataService&#58;
+      BikePartDataService&#41;&#123;&#125;   ngOnInit&#123;&#9;&#9;
+      this&#46;bikePartDataService&#46;getBikeParts&#40;&#41;&#46;subscribe&#40;bikeParts &#61;&#62;
+      this&#46;bikeParts &#61; bikeParts&#41;&#59;<br />
+      &#9;&#9;&#125;<br />
+      &#125;
+    </ion-card-content>
+ </ion-card>
+</b><br /><br />
+
+ONE more thing: <b>bike-part.component.ts</b><br />
+<b>
+  <ion-card>
+    <ion-card-content>
+      totalBikeParts&#40;&#41;&#123;<br />
+        &#9;&#9;let sum
+        &#61; &#48;&#59;<br />
+        <br />
+        &#9;&#9;if&#40;Array&#46;isArray&#40;this&#46;bikeParts&#41;&#41;&#123;<br />
+        <br />
+        &#9;&#9;&#9;for&#40;let
+        totalParts of this&#46;bikeParts&#41;&#123;<br />
+        &#9;&#9;&#9;sum &#61;
+        sum &#43; totalParts&#46;inStock&#59;<br />
+        &#9;&#9;&#125;<br />
+        &#9;    &#125;<br />
+        &#9;&#9;return sum&#59;<br />
+        &#9;&#125;
+    </ion-card-content>
+ </ion-card>
+</b><br /><br />
+
+</p>
 
 </ion-content>

@@ -28,15 +28,10 @@ Example for Structural Directives: ngIf and ngFor<br /><br />
 <br />
 &#64;Component&#40;&#123;<br />
 selector: 'my-app',<br />
-template: `&#60;h&#49;&#62; Hey Welcome to : &#123;&#123;title&#125;&#125; &#60;&#47;h&#49;&#62;<br />
-<!-- <ul>
-	<li *ngFor="let bikePart of bikeParts
-		<h2>{{bikePart.name}}</h2>
-		<p>{{bikePart.description}}</p>
-		<p *ngIf="bikePart.inStock > 0">{{bikePart.inStock}}</p>
-		<p *ngIf="bikePart.inStock === 0">out of stock</p>
-	</li>
-</ul> -->
+template: `<br />
+&#60;h&#49;&#62; Hey Welcome to : &#123;&#123;title&#125;&#125; &#60;&#47;h&#49;&#62;<br />
+<button small (click)="view1()">L2: code#1</button>
+&#125;&#41;
 <br />
 export class AppComponent &#123;<br />
 &#9;title &#61; &#34;Bike
@@ -84,16 +79,7 @@ We want to show the Bike Part name in uppercase automatically and the price is s
 <b>
   <ion-card>
     <ion-card-content>
-      <!--
-      <ul>
-      	<li *ngFor="let bikePart of bikeParts
-      	    <h2>{{bikePart.name | uppercase}}</h2>
-      	    <p>{{bikePart.description}}</p>
-      	    <p *ngIf="bikePart.inStock > 0">{{bikePart.inStock}}</p>
-      	    <p *ngIf="bikePart.inStock === 0">out of stock</p>
-      	    <p>{{bikePart.price | currency:EUR':true}}</p>
-      	</li>
-      </ul> -->
+      <button small (click)="view1()">L2: code#2</button>
    </ion-card-content>
 </ion-card>
 </b>
@@ -111,28 +97,42 @@ The json data we created above contains 3 bike parts as we know.<br /><br />
 <b>
   <ion-card>
     <ion-card-content>
-      <!-- import { Component } from '@angular/core';
-      @Component({
-      	selector: 'my-app',
-      	template: `<h1>Hey Welcome to : {{title}} </h1>
-      				<ul>
-      					<li> Total {{totalBikeParts()}} Bike Parts are available</li>
-      					<li *ngFor="let bikePart of bikeParts">
-      						...
-      					</li>
-      				</ul>`
-      })
-      export class AppComponent {
-      	title = "Bike Rash";
-      	bikeParts = [{...}];
-      	totalBikeParts(){
-      		let sum = 0;
-      		for(let totalParts of this.bikeParts){
-      		sum = sum + totalParts.inStock;
-      		}
-      		return sum;
-      	}
-       } -->
+
+      import &#123;
+Component &#125; from &#39;&#64;angular&#47;core&#39;&#59;<br />
+
+   &#64;Component&#40;&#123;<br />
+
+   &#9;selector&#58; &#39;my&#45;app&#39;&#44;<br />
+
+    &#9;template&#58; &#96;&#60;h&#49;&#62;Hey
+Welcome to &#58; &#123;&#123;title&#125;&#125; &#60;&#47;h&#49;&#62;
+
+    <button small (click)="view1()">L2: code#3</button><br />
+
+      export class AppComponent &#123;<br />
+     &#9;title
+  &#61; &#34;Bike Rash&#34;&#59;<br />
+
+  &#9;bikeParts &#61; &#91;&#123;&#46;&#46;&#46;&#125;&#93;&#59;<br />
+
+    &#9;totalBikeParts&#40;&#41;&#123;<br />
+
+    &#9;&#9;let sum
+&#61; &#48;&#59;<br />
+
+ &#9;&#9;for&#40;let totalParts of this&#46;bikeParts&#41;&#123;<br />
+
+    &#9;&#9;sum &#61;
+sum &#43; totalParts&#46;inStock&#59;<br />
+
+  &#9;&#9;&#125;<br />
+
+  &#9;&#9;return sum&#59;<br />
+
+   &#9;&#125;<br />
+
+    &#125;
  </ion-card-content>
 </ion-card>
 </b>

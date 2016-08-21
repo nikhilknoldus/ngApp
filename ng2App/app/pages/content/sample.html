@@ -1,0 +1,127 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+HTML & Inline AngularJs Code snippets in series.<br />
+<br />
+<h4>L2: code#1</h4>
+<xmp>
+  <ul>
+   <li *ngFor="let bikePart of bikeParts">
+     <h2>{{bikePart.name}}</h2>
+     <p>{{bikePart.description}}</p>
+     <p *ngIf="bikePart.inStock > 0">{{bikePart.inStock}}</p>
+     <p *ngIf="bikePart.inStock === 0">out of stock</p>
+   </li>
+ </ul>
+</xmp>
+<br />
+<h4>L2: code#2</h4>
+<xmp>
+  <ul>
+    <li *ngFor="let bikePart of bikeParts
+        <h2>{{bikePart.name | uppercase}}</h2>
+        <p>{{bikePart.description}}</p>
+        <p *ngIf="bikePart.inStock > 0">{{bikePart.inStock}}</p>
+        <p *ngIf="bikePart.inStock === 0">out of stock</p>
+        <p>{{bikePart.price | currency:EUR':true}}</p>
+    </li>
+  </ul>
+</xmp>
+<br />
+
+<h4>L2: code#3</h4>
+<xmp>
+   <ul>
+      <li> Total {{totalBikeParts()}} Bike Parts are available</li>
+      <li *ngFor="let bikePart of bikeParts">
+        ...
+      </li>
+    </ul>})
+</xmp>
+<br /><br />
+
+<h2>L3: code#1</h2>
+<xmp>
+    <ul>
+      <li> Total {{totalBikeParts()}} Bike Parts are available</li>
+      <li *ngFor="let bikePart of bikeParts">
+      <h2>{{bikePart.name | uppercase}}</h2>
+      <p class="description">{{bikePart.description}}</p>
+      <p *ngIf="bikePart.inStock > 0">{{bikePart.inStock}}</p>
+      <p *ngIf="bikePart.inStock === 0">out of stock</p>
+      <p class="price"> {{bikePart.price | currency:'USD':true}}</p>
+    </li>
+  </ul>
+</xmp>
+<br /><br />
+
+<h2>L4: code#1</h2>
+<xmp>
+    <ul>
+      <li> Total {{totalBikeParts()}} Bike Parts are available</li>
+        <li * ngFor="let bikePart of bikeParts" [class.available]=”bikePart inStock”>
+        <h2>{{bikePart.name | uppercase}}</h2>
+        <p class="description">{{bikePart description}}</p>
+        <p * ngIf="bikePart inStock > 0">{{bikePart inStock}}</p>
+        <p * ngIf="bikePart inStock === 0">out of stock</p>
+        <p class="price"> {{bikePart price | currency:'USD':true}}</p>
+      </li>
+    </ul>
+</xmp>
+<br />
+
+<h2>L4: code#2</h2>
+  <xmp>
+    <ul>
+      ...
+       <li *ngFor="let bikePart of bikeParts" [class.available]="bikePart.inStock">
+        <h2>{{bikePart.name | uppercase}}</h2>
+        ...
+        <button class=”minusSign” (click)=”minusQuantity()”>-</button>
+        <span>{{bikePart.quantity}}</span>
+        <button class=”plusSign” (click)=”plusQuantity(bikePart)”>+</button>
+        ...
+       </li>
+    </ul>
+  </xmp>
+
+<h2>L4: code#3</h2>
+  <xmp>
+    <ul>
+        ...
+        <li *ngFor="let bikePart of bikeParts" [class.available]="bikePart.inStock">
+        <h2>{{bikePart.name | uppercase}}</h2>
+        ...
+        <button class=”minusSign” (click)=”minusQuantity()”>-</button>
+        <span>{{bikePart.quantity}}</span>
+        <input type=”text” [value]=”bikePart.quantity”
+        (input) = “bikePart.quantity = $event.target.value”>
+        <button class=”plusSign” (click)=”plusQuantity(bikePart)”>+</button>
+        ...
+        </li>
+    </ul>
+  </xmp>
+
+
+<h2>L4: code#4</h2>
+<xmp>
+  <ul>
+      ...
+      <li *ngFor="let bikePart of bikeParts" [class.available]="bikePart.inStock">
+      <h2>{{bikePart.name | uppercase}}</h2>
+      ...
+      <button class=”minusSign” (click)=”minusQuantity()”>-</button>
+      <span>{{bikePart.quantity}}</span>
+      <input type=”text” [(ngModel)]=”bikePart.quantity>
+      <button class=”plusSign” (click)=”plusQuantity(bikePart)”>+</button>
+      ...
+      </li>
+  </ul>
+</xmp>
+
+
+
+</body>
+</html>

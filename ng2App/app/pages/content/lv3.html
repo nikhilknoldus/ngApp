@@ -28,16 +28,19 @@
     <b>
       <ion-card>
         <ion-card-content>
-      <!-- import { Component } from '@angular/core';
-
-      @Component({
-
-      	selector: 'my-app',
-      	template: `<h1>Hey Welcome to : {{title}} </h1>`
-      })
-      export class AppComponent {
-      		title = "Bike Rash";
-       }       -->
+          import &#123; Component &#125; from
+       &#39;&#64;angular&#47;core&#39;&#59;<br />
+       <br />
+       &#64;Component&#40;&#123;<br />
+       <br />
+       &#9;selector&#58; &#39;my&#45;app&#39;&#44;<br />
+        &#9;template&#58; &#96;&#60;h&#49;&#62;Hey Welcome to &#58;
+       &#123;&#123;title&#125;&#125; &#60;&#47;h&#49;&#62;&#96;<br />
+        &#125;&#41;<br />
+        export class AppComponent &#123;<br />
+           &#9;&#9;title &#61;
+       &#34;Bike Rash&#34;&#59;<br />
+         &#125;
         </ion-card-content>
      </ion-card>
    </b><br />
@@ -46,22 +49,25 @@
    <b>
      <ion-card>
        <ion-card-content>
-         <!-- import { Component } from "@angular/core";
-
-       @Component({
-       	selector: 'bike-parts',
-       	template: ` <ul>...</ul> `
-       	})
-
-       export class CarPartComponent{
-
-       	bikeParts = [{...];
-
-       	totalBikeParts() {
-       	...
-       	return sum;
-       	}
-       } -->
+         import &#123; Component &#125; from &#34;&#64;angular&#47;core&#34;&#59;<br />
+            <br />
+            &#64;Component&#40;&#123;<br />
+             &#9;selector&#58; &#39;bike&#45;parts&#39;&#44;<br />
+               &#9;template&#58; &#96; &#60;ul&#62;&#46;&#46;&#46;&#60;&#47;ul&#62;
+            &#96;<br />
+             &#9;&#125;&#41;<br />
+            <br />
+              export class CarPartComponent&#123;<br />
+            <br />
+                 &#9;bikeParts
+            &#61; &#91;&#123;&#46;&#46;&#46;&#93;&#59;<br />
+            <br />
+              &#9;totalBikeParts&#40;&#41; &#123;<br />
+                &#9;&#46;&#46;&#46;<br />
+                 &#9;return
+            sum&#59;<br />
+             &#9;&#125;<br />
+              &#125;
        </ion-card-content>
     </ion-card>
   </b><br />
@@ -78,20 +84,24 @@
     <b>
       <ion-card>
         <ion-card-content>
-          <!--
-          import { Component } from '@angular/core';
-          import { BikePartComponent} from './bike-parts.component' [**1]
-          @Component({
-          	selector: 'my-app',
-          	template: `<h1>Hey Welcome to : {{title}} </h1>
-          				<bike-parts></bike-parts> [**2]`,
-              directives: [BikePartComponent] [**3]
-          })
-          export class AppComponent {
-          		title = "Bike Rash";
-           }
-          NOTICED? The **1, **2 & **3.
-          -->
+          import &#123; Component &#125;
+            from &#39;&#64;angular&#47;core&#39;&#59;<br />
+                 import
+            &#123; BikePartComponent&#125; from &#39;&#46;&#47;bike&#45;parts&#46;component&#39; &#91;&#42;&#42;&#49;&#93;<br />
+              &#64;Component&#40;&#123;<br />
+            &#9;selector&#58; &#39;my&#45;app&#39;&#44;<br />
+                 &#9;template&#58;
+            &#96;&#60;h&#49;&#62;Hey Welcome to &#58; &#123;&#123;title&#125;&#125; &#60;&#47;h&#49;&#62;<br />
+               &#9;&#9;&#9;&#9;&#60;bike&#45;parts&#62;&#60;&#47;bike&#45;parts&#62; &#91;&#42;&#42;&#50;&#93;&#96;&#44;<br />
+            directives&#58; &#91;BikePartComponent&#93; &#91;&#42;&#42;&#51;&#93;<br />
+            &#125;&#41;<br />
+                export class
+            AppComponent &#123;<br />
+                 &#9;&#9;title
+            &#61; &#34;Bike Rash&#34;&#59;<br />
+             &#125;<br />
+                 NOTICED&#63;
+            The &#42;&#42;&#49;&#44; &#42;&#42;&#50; &#38; &#42;&#42;&#51;&#46;
         </ion-card-content>
      </ion-card>
    </b><br />
@@ -119,18 +129,9 @@ All our html will go inside  <b>bike-parts.component.html</b> and as of now our 
 <b>
   <ion-card>
     <ion-card-content>
-      <!--
-        <ul>
-          <li> Total {{totalBikeParts()}} Bike Parts are available</li>
-      	<li *ngFor="let bikePart of bikeParts">
-      		<h2>{{bikePart.name | uppercase}}</h2>
-      		<p class="description">{{bikePart.description}}</p>
-      		<p *ngIf="bikePart.inStock > 0">{{bikePart.inStock}}</p>
-      		<p *ngIf="bikePart.inStock === 0">out of stock</p>
-      		<p class="price"> {{bikePart.price | currency:'USD':true}}</p>
-      	</li>
-      </ul>
-      -->
+
+    <button small (click)="view1()">L3: code#1</button>
+
     </ion-card-content>
  </ion-card>
 </b><br /><br />
@@ -140,16 +141,14 @@ All our html will go inside  <b>bike-parts.component.html</b> and as of now our 
 <b>
   <ion-card>
     <ion-card-content>
-      <!--
-      .description{
-        font-size:14px;
-        color:blue;
-        }
-
-        .price{
-        font-weight:bold;
-        }
-      -->
+      &#46;description&#123;<br />
+        font&#45;size&#58;&#49;&#52;px&#59;<br />
+          color&#58;blue&#59;<br />
+      &#125;<br />
+      <br />
+        &#46;price&#123;<br />
+          font&#45;weight&#58;bold&#59;<br />
+      &#125;
     </ion-card-content>
  </ion-card>
 </b><br />
@@ -160,19 +159,18 @@ Now as we have take out these code form bike-parts.component.ts, so we have to t
 <b>
   <ion-card>
     <ion-card-content>
-      <!--
-      import { Component } from "@angular/core";
-
-      @Component({
-
-      	selector: 'bike-parts',
-      	templateUrl: 'app/bike-parts.component.html',
-      	styleUrls:['app/bike-parts.component.css']
-      	})
-
-      export class BikePartComponent{
-      ....
-      -->
+      import &#123; Component &#125;
+      from &#34;&#64;angular&#47;core&#34;&#59;<br />
+      <br />
+       &#64;Component&#40;&#123;<br />
+      <br />
+       &#9;selector&#58; &#39;bike&#45;parts&#39;&#44;<br />
+        &#9;templateUrl&#58; &#39;app&#47;bike&#45;parts&#46;component&#46;html&#39;&#44;<br />
+         &#9;styleUrls&#58;&#91;&#39;app&#47;bike&#45;parts&#46;component&#46;css&#39;&#93;<br />
+         &#9;&#125;&#41;<br />
+      <br />
+         export class BikePartComponent&#123;<br />
+     &#46;&#46;&#46;&#46;
     </ion-card-content>
  </ion-card>
 </b><br /><br />
@@ -201,13 +199,14 @@ lets create <b>bike-part.ts</b>, and write the class as like:<br />
 <b>
   <ion-card>
     <ion-card-content>
-      <!-- export class BikePart{
-    	id: number;
-    	name: string;
-    	description: string;
-    	inStock: number;
-    	price:number;
-    } -->
+      export class BikePart&#123;<br />
+      &#9;id&#58; number&#59;<br />
+      &#9;name&#58; string&#59;<br />
+         &#9;description&#58;
+      string&#59;<br />
+         &#9;inStock&#58; number&#59;<br />
+        &#9;price&#58;number&#59;<br />
+      &#125;
     </ion-card-content>
  </ion-card>
 </b><br />
@@ -216,7 +215,7 @@ Now for using this model in <b>bike-part.component.ts</b> first import this mode
 <b>
   <ion-card>
     <ion-card-content>
-      <!-- import { BikePart } from './bike-part' -->
+      import &#123; BikePart &#125; from &#39;&#46;&#47;bike&#45;part&#39;
     </ion-card-content>
  </ion-card>
 </b><br />
@@ -228,18 +227,18 @@ in <b>bike-part.component.ts:</b><br />
 <b>
   <ion-card>
     <ion-card-content>
-      <!--
-          bikeParts: BikePart[] = [{
-    		"id":1,
-    		"name": "SuperTyres",
-    		"description":"Very best rubber typres",
-    		"inStock": 4,
-    		"price": 24.9808
-    	},
-    	{
-    		"id":2,
-    		...
-      -->
+
+      bikeParts&#58; BikePart&#91;&#93; &#61; &#91;&#123;<br />
+        &#9;&#9;&#34;id&#34;&#58;&#49;&#44;<br />
+        &#9;&#9;&#34;name&#34;&#58; &#34;SuperTyres&#34;&#44;<br />
+        &#9;&#9;&#34;description&#34;&#58;&#34;Very best rubber typres&#34;&#44;<br />
+        &#9;&#9;&#34;inStock&#34;&#58; &#52;&#44;<br />
+        &#9;&#9;&#34;price&#34;&#58; &#50;&#52;&#46;&#57;&#56;&#48;&#56;<br />
+        &#9;&#125;&#44;<br />
+        &#9;&#123;<br />
+        &#9;&#9;&#34;id&#34;&#58;&#50;&#44;<br />
+        &#9;&#9;&#46;&#46;&#46;
+
     </ion-card-content>
  </ion-card>
 </b><br />
@@ -249,9 +248,9 @@ so <b>mock.ts</b><br />
 <b>
   <ion-card>
     <ion-card-content>
-      <!-- import {BikePart} from './bike-parts';<br />
+      import &#123;BikePart&#125; from &#39;&#46;&#47;bike&#45;parts&#39;&#59;&#60;br &#47;&#62;<br />
 
-      export const BIKEPART: BikePart[]=[{...}];    -->
+      export const BIKEPART&#58; BikePart&#91;&#93;&#61;&#91;&#123;&#46;&#46;&#46;&#125;&#93;&#59;
     </ion-card-content>
  </ion-card>
 </b><br />
@@ -264,15 +263,16 @@ so <b>mock.ts</b><br />
   <b>
     <ion-card>
       <ion-card-content>
-        <!-- import {BIKEPART} from './mock';
-      	...
-      	bikeParts: BikePart[];
 
-      	ngOnInit(){
-      		this.bikeParts= BIKEPART;
-      	}
-      	...
- -->
+        import &#123;BIKEPART&#125; from &#39;&#46;&#47;mock&#39;&#59;<br />
+        &#9;&#46;&#46;&#46;<br />
+        &#9;bikeParts&#58; BikePart&#91;&#93;&#59;<br />
+        <br />
+        &#9;ngOnInit&#40;&#41;&#123;<br />
+        &#9;&#9;this&#46;bikeParts&#61; BIKEPART&#59;<br />
+        &#9;&#125;<br />
+        &#9;&#46;&#46;&#46;
+
       </ion-card-content>
    </ion-card>
   </b><br />
@@ -281,8 +281,6 @@ so <b>mock.ts</b><br />
 
  1- In typescript we can use classes to model our data<br />
  2- It's a good practice to keep your mock data separate from component and model (class).
-
-
 
 </p>
 </ion-content>
