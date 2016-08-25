@@ -6,16 +6,29 @@
 </ion-navbar>
 
 <ion-content>
+
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
-    </button>
+
+    <ion-item>
+      <ion-icon name="logo-angular" item-left></ion-icon>
+        AngularJs Official Documentation
+    </ion-item>
+    <ion-item>
+      <ion-icon name="logo-javascript" item-left></ion-icon>
+        TypeScript Official Documentation
+    </ion-item>
+    <ion-item>
+      <ion-icon name="ribbon" item-left></ion-icon>
+        Knoldus Official Blog
+    </ion-item>
+    <ion-item>
+      <ion-icon name="school" item-left></ion-icon>
+        CodeSchool
+    </ion-item>
+
+
+
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+
+
 </ion-content>

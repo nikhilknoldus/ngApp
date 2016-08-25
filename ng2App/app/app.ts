@@ -43,22 +43,22 @@ class MyApp {
          if (/(android)/i.test(navigator.userAgent)) {
          admobid = { // for Android
            banner: 'ca-app-pub-5724383886840960/6005198717',
-           interstitial: 'ca-app-pub-6869992474017983/1657046752'
+           interstitial: 'ca-app-pub-5724383886840960/7370207110'
          };
          } else if (/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
          admobid = { // for iOS
            banner: 'ca-app-pub-5724383886840960/6005198717',
-           interstitial: 'ca-app-pub-6869992474017983/7563979554'
+           interstitial: 'ca-app-pub-5724383886840960/7370207110'
          };
          } else {
          admobid = { // for Windows Phone
            banner: 'ca-app-pub-5724383886840960/6005198717',
-           interstitial: 'ca-app-pub-6869992474017983/1355127956'
+           interstitial: 'ca-app-pub-5724383886840960/7370207110'
          };
          }
 
          AdMob.createBanner({
-         isTesting: true,
+         isTesting: false,
          autoShow: true
          });
       // Okay, so the platform is ready and our plugins are available.
