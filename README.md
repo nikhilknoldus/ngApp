@@ -6,7 +6,7 @@
 
   - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
-  - [Steps for setting a new user]
+  - [Steps for setting a new user](#steps-for-setting-a-new-user)
   - [Project Directory Structure](#project-directory-structure)
   - [Deployment](#deployment)
   - [License](#license)
